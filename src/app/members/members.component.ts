@@ -11,20 +11,11 @@ import { MessageService } from '../message.service';
 export class MembersComponent implements OnInit {
 
   members: Member[];
-  selectedMember: Member;
 
-  constructor(
-    private memberService: MemberService,
-    private MessageService: MessageService
-    ) { }
+  constructor( private memberService: MemberService ) { }
 
   ngOnInit(): void {
     this.getMembers();
-  }
-
-  onSelect(member: Member): void {
-    this.selectedMember = member;
-    this.MessageService.add(`MembersComponent: 社員データ(id=${member.id})が選択されました`);
   }
 
   getMembers(): void {
