@@ -12,7 +12,7 @@ export class MembersComponent implements OnInit {
 
   members: Member[];
 
-  constructor( private memberService: MemberService ) { }
+  constructor(private memberService: MemberService) { }
 
   ngOnInit(): void {
     this.getMembers();
@@ -22,4 +22,5 @@ export class MembersComponent implements OnInit {
     this.memberService.getMembers() // Observable
       .subscribe(members => this.members = members);
   }
+
 }
