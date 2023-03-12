@@ -11,5 +11,8 @@
     <a routerLink="/detail/{{ member.id }}">
       <span class="badge">{{ member.id }}</span> {{ member.name }}
     </a>
+    <button class="delete" title="社員の削除" (click)="delete(member)">
+      x
+    </button>
   </li>
 </ul>
