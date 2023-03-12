@@ -14,7 +14,7 @@ export class MemberDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private MemberService: MemberService,
+    private memberService: MemberService,
     private location: Location
   ) { }
 
@@ -24,12 +24,17 @@ export class MemberDetailComponent implements OnInit {
 
   getMember() {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.MemberService.getMember(id)
+    this.memberService.getMember(id)
       .subscribe(member => this.member = member);
   }
 
   goBack(): void {
     this.location.back();
+  }
+
+  save(): void {
+    this.memberService.updateMember(this.member)
+      .subscribe(() =>this.goBack());
   }
 
 }
