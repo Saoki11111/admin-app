@@ -64,6 +64,17 @@ export class MemberService {
       );
   }
 
+  searchMembers(term: string): Observable<Member[]> {
+    if(!term.trim()) {
+      return of([]); // なければ配列を返す
+    }
+    return this.http.get<Member[]>(`${this.membersUrl}/?name=${term}`)
+      .pipe(
+        tap(_ => this.log(`${term} にマッチする社員データが見つかりました`)),
+        catchError(this.handleError<Member[]>('searchMember', []))
+      );
+  }
+
   private log(message: string) {
     this.messageService.add(`MemberService: ${message}`);
   }
